@@ -2,9 +2,11 @@ package org.leedae.firstspring.member;
 
 public class MemberServiceImpl implements MemberService {
 
+    private final MemberRepository memberRepository;
 
-    //dip 위반 곧 변경 예정
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    public MemberServiceImpl(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     @Override
     public void join(Member member) {
