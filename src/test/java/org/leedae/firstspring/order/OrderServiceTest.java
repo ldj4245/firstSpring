@@ -1,18 +1,26 @@
 package org.leedae.firstspring.order;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.leedae.firstspring.discount.DiscountPolicy;
-import org.leedae.firstspring.discount.FixDiscountPolicy;
+import org.leedae.firstspring.AppConfig;
 import org.leedae.firstspring.member.Grade;
 import org.leedae.firstspring.member.Member;
 import org.leedae.firstspring.member.MemberService;
-import org.leedae.firstspring.member.MemberServiceImpl;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class OrderServiceTest {
-    MemberService memberService = new MemberServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
+
+    MemberService memberService;
+    OrderService orderService;
+
+    @BeforeEach
+    public void beforeEach(){
+        AppConfig appConfig = new AppConfig();
+
+        memberService = appConfig.memberService();
+        orderService = appConfig.orderService();
+    }
 
 
     @Test
