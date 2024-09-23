@@ -2,7 +2,10 @@ package org.leedae.firstspring.discount;
 
 import org.leedae.firstspring.member.Grade;
 import org.leedae.firstspring.member.Member;
+import org.springframework.stereotype.Component;
 
+
+@Component
 public class RateDiscountPolicy implements DiscountPolicy  {
 
     private int discountPercent = 10 ;
