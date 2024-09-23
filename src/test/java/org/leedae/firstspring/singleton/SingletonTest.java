@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.leedae.firstspring.AppConfig;
 import org.leedae.firstspring.member.MemberService;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -38,6 +39,25 @@ public class SingletonTest {
         System.out.println("service2 = " + service2);
 
         assertThat(service1).isSameAs(service2);
+
+    }
+
+
+    @Test
+    @DisplayName("스프링 컨테이너와 싱클톤")
+    void springContainer(){
+
+        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+        MemberService memberService1 = ac.getBean("memberService", MemberService.class);
+        MemberService memberService2 = ac.getBean("memberService",MemberService.class);
+
+
+        //참조값이 같을까요 다를까요
+        System.out.println("memberService1 = " + memberService1);
+        System.out.println("memberService2 = " + memberService2);
+
+        assertThat(memberService1).isSameAs(memberService2);
+
 
     }
 }
