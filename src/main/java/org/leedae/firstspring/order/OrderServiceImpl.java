@@ -1,37 +1,26 @@
 package org.leedae.firstspring.order;
 
+import lombok.RequiredArgsConstructor;
+import org.leedae.firstspring.annotation.MainDiscountPolicy;
 import org.leedae.firstspring.discount.DiscountPolicy;
 import org.leedae.firstspring.member.Member;
 import org.leedae.firstspring.member.MemberRepository;
 import org.leedae.firstspring.member.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
 public class OrderServiceImpl implements OrderService {
 
-      private final MemberRepository memberRepository;
-     private final DiscountPolicy discountPolicy;
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
 
 
-//    @Autowired
-//    public void setMemberRepository(MemberRepository memberRepository) {
-//        this.memberRepository = memberRepository;
-//    }
-//
-//
-//    @Autowired
-//    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
-//        this.discountPolicy = discountPolicy;
-//    }
-
-    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
-
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
