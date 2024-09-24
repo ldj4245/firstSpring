@@ -1,6 +1,11 @@
 package org.leedae.firstspring.scan.filter;
 
 import org.junit.jupiter.api.Test;
+import org.leedae.firstspring.AutoAppConfig;
+import org.leedae.firstspring.discount.DiscountPolicy;
+import org.leedae.firstspring.discount.RateDiscountPolicy;
+import org.leedae.firstspring.member.MemberRepository;
+import org.leedae.firstspring.member.MemberServiceImpl;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
@@ -26,7 +31,6 @@ public class ComponentFilterAppConfigTest {
                 () -> ac.getBean("beanB",BeanB.class));
 
     }
-
 
 
     @Configuration

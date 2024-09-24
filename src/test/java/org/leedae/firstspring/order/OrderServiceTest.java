@@ -3,9 +3,11 @@ package org.leedae.firstspring.order;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.leedae.firstspring.AppConfig;
+import org.leedae.firstspring.discount.FixDiscountPolicy;
 import org.leedae.firstspring.member.Grade;
 import org.leedae.firstspring.member.Member;
 import org.leedae.firstspring.member.MemberService;
+import org.leedae.firstspring.member.MemoryMemberRepository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -34,4 +36,6 @@ public class OrderServiceTest {
 
         assertThat(order.getDiscountPrice()).isEqualTo(1000);
     }
+
+
 }

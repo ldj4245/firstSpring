@@ -32,6 +32,7 @@ public class AppConfig {
     public OrderService orderService(){
         System.out.println("call3 AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
+
     }
 
 
